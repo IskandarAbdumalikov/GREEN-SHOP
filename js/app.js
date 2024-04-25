@@ -60,7 +60,7 @@ wrapper.addEventListener("click", (e) => {
     e.target.className === "card__btn"
   ) {
     let id = e.target.dataset.id;
-    window.open(`/products.html?id=${id}`, "_self");
+    window.open(`/pages/products.html?id=${id}`, "_self");
   }
 });
 
