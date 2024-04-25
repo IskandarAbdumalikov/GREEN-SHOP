@@ -3,7 +3,7 @@ let logoutBtn = document.querySelector(".log__out__btn");
 
 logoutBtn.addEventListener("click", () => {
   localStorage.clear();
-  window.open(`index.html`, "_self");
+  window.open(`/index.html`, "_self");
 });
 
 function checkUser() {

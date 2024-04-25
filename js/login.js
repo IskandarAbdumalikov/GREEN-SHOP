@@ -3,7 +3,20 @@ let inputUsername = document.querySelector(".input__username");
 let inputPassword = document.querySelector(".input__password");
 let LOGIN__URL = "https://dummyjson.com";
 let error = document.querySelector(".error");
-let logInBtn = document.querySelector(".logIN__btn");
+let navbarLink = document.querySelector(".navbar__link");
+
+
+function checkAdmin() {
+  let isLogin = localStorage.getItem("x-auth-token")
+
+  if (isLogin) {
+    navbarLink.innerHTML = "Admin panel"
+    navbarLink.setAttribute("href","/pages/admin.html")
+  }else{
+    navbarLink.innerHTML = "Log in";
+    navbarLink.setAttribute("href", "/index.html");
+  }
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -29,7 +42,7 @@ async function signIn(user) {
         return (error.style.opacity = 1);
       }
       localStorage.setItem("x-auth-token", res.token);
-      window.open(`admin.html`, "_self");
+      window.open(`/pages/admin.html`, "_self");
       logInBtn.innerHTML = "Admin panel"
     })
     .catch((err) => console.log("err>>>", err));
