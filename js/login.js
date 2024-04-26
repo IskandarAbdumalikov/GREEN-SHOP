@@ -5,14 +5,13 @@ let LOGIN__URL = "https://dummyjson.com";
 let error = document.querySelector(".error");
 let navbarLink = document.querySelector(".navbar__link");
 
-
 function checkAdmin() {
-  let isLogin = localStorage.getItem("x-auth-token")
+  let isLogin = localStorage.getItem("x-auth-token");
 
   if (isLogin) {
-    navbarLink.innerHTML = "Admin panel"
-    navbarLink.setAttribute("href","/pages/admin.html")
-  }else{
+    navbarLink.innerHTML = "Admin panel";
+    navbarLink.setAttribute("href", "/pages/admin.html");
+  } else {
     navbarLink.innerHTML = "Log in";
     navbarLink.setAttribute("href", "/index.html");
   }
@@ -43,7 +42,20 @@ async function signIn(user) {
       }
       localStorage.setItem("x-auth-token", res.token);
       window.open(`/pages/admin.html`, "_self");
-      logInBtn.innerHTML = "Admin panel"
+      logInBtn.innerHTML = "Admin panel";
     })
     .catch((err) => console.log("err>>>", err));
 }
+
+let isLogin = null;
+
+function loginAdmin() {
+  if (!isLogin) {
+    navbarLink.innerHTML = "Admin";
+    navbarLink.setAttribute("href","/pages/admin.html")
+  } else {
+    navbarLink.innerHTML = "Login";
+  }
+}
+
+loginAdmin();
